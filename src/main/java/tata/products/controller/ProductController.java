@@ -1,10 +1,7 @@
 package tata.products.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tata.products.model.Product;
 import tata.products.service.ProductService;
 
@@ -20,8 +17,22 @@ private ProductService productService;
         return productService.getAllProducts();
     }
 
-    @PutMapping("/addproduct")
-    public void addProduct(@RequestBody Product product){
+    @PostMapping ("/addproduct")
+    public String addProduct(@RequestBody Product product){
+        return productService.addProduct(product);
 
     }
+
+    @GetMapping("/search/{id}")
+    public Product findById(@PathVariable("id") int id){
+        return productService.findById(id);
+
+    }
+
+    @DeleteMapping("/delete/{productId}")
+    public String deleteProduct(@PathVariable("productId") int productId) {
+
+            return productService.deleteProduct(productId);
+    }
+
 }
