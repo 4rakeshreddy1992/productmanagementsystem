@@ -46,4 +46,22 @@ public class ProductService {
         }
 
     }
+
+    public String updateProduct( Product newProduct){
+        try {
+            Product oldProduct = productRepository.findById(newProduct.getId()).get();
+
+            oldProduct.setName(newProduct.getName());
+            oldProduct.setDescription(newProduct.getDescription());
+            oldProduct.setPrice(newProduct.getPrice());
+
+            productRepository.save(oldProduct);
+
+            return "updated successfully";
+        }
+        catch(Exception e){
+            return "No Record Found";
+        }
+
+        }
 }

@@ -35,4 +35,10 @@ private ProductService productService;
             return productService.deleteProduct(productId);
     }
 
+
+    @PutMapping ("/update")
+
+    public String updateProduct(@RequestBody Product product){
+        return productService.updateProduct(product);
+    }
 }
