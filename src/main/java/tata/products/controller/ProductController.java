@@ -20,7 +20,11 @@ private ProductService productService;
     @PostMapping ("/addproduct")
     public String addProduct(@RequestBody Product product){
         return productService.addProduct(product);
+    }
 
+    @GetMapping("/mytaskservice/{userName}")
+    public String getWish(@PathVariable String userName){
+        return "Hi "+userName+" welcome to MyService";
     }
 
     @GetMapping("/search/{id}")
